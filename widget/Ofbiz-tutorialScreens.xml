@@ -29,6 +29,7 @@ under the License.
             <widgets>
                 <decorator-screen name="Ofbiz-tutorialCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
+                        <label text="Hello World!! I am learning how to render screens in Apache Ofbiz!! "/>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
