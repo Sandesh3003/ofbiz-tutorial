@@ -19,5 +19,50 @@ under the License.
 -->
 
 <entity-engine-xml>
+    <MilerProductType description="Service" productTypeId="SERVICE"/>
+    <MilerProductType description="Good" productTypeId="GOOD"/>
+    <MilerProductType description="Raw Material" parentTypeId="GOOD" productTypeId="RAW_MATERIAL"/>
+    <MilerProductType description="Subassembly" parentTypeId="GOOD" productTypeId="SUBASSEMBLY"/>
+    <MilerProductType description="Finished Good" parentTypeId="GOOD" productTypeId="FINISHED_GOOD"/>
+    <MilerProductType description="Digital Good" parentTypeId="GOOD" productTypeId="DIGITAL_GOOD"/>
+    <MilerProductType description="Finished/Digital Good" parentTypeId="GOOD" productTypeId="FINDIG_GOOD"/>
+    <MilerProductType description="Configurable Good" parentTypeId="GOOD" productTypeId="AGGREGATED"/>
+    <MilerProductType description="Marketing Package" parentTypeId="GOOD" productTypeId="MARKETING_PKG"/>
+    <MilerProductType description="Marketing Package: Auto Manufactured" parentTypeId="MARKETING_PKG" productTypeId="MARKETING_PKG_AUTO"/>
+    <MilerProductType description="Marketing Package: Pick Assembly" parentTypeId="MARKETING_PKG" productTypeId="MARKETING_PKG_PICK"/>
+
+    <MilerProductFeatureType description="Color" productFeatureTypeId="COLOR"/>
+    <MilerProductFeatureType description="Size" productFeatureTypeId="SIZE"/>
+
+    <MilerProductFeature productFeatureId="COLOR_WHITE" productFeatureTypeId="COLOR" description="White"/>
+    <MilerProductFeature productFeatureId="COLOR_GRAY" productFeatureTypeId="COLOR" description="Gray"/>
+    <MilerProductFeature productFeatureId="COLOR_BLACK" productFeatureTypeId="COLOR" description="Black"/>
+    <MilerProductFeature productFeatureId="COLOR_RED" productFeatureTypeId="COLOR" description="Red"/>
+    <MilerProductFeature productFeatureId="COLOR_GREEN" productFeatureTypeId="COLOR" description="Green"/>
+    <MilerProductFeature productFeatureId="COLOR_BLUE" productFeatureTypeId="COLOR" description="Blue"/>
+    <MilerProductFeature productFeatureId="COLOR_YELLOW" productFeatureTypeId="COLOR" description="Yellow"/>
+
+    <MilerProductFeature productFeatureId="SIZE_S" productFeatureTypeId="SIZE" description="Small"/>
+    <MilerProductFeature productFeatureId="SIZE_M" productFeatureTypeId="SIZE" description="Medium"/>
+    <MilerProductFeature productFeatureId="SIZE_L" productFeatureTypeId="SIZE" description="Large"/>
+    <MilerProductFeature productFeatureId="SIZE_XL" productFeatureTypeId="SIZE" description="Extra Large"/>
+    <MilerProductFeature productFeatureId="SIZE_XXL" productFeatureTypeId="SIZE" description="Extra Extra Large"/>
+
+    <MilerProduct productId="ANIME_TSHIRT_001" productName="Anime T-Shirt - Naruto" description="Official Naruto merchandise t-shirt" productRating="4.5" productTypeId="FINISHED_GOOD" productPrice="25.99"/>
+    <MilerProduct productId="ANIME_TSHIRT_002" productName="Anime T-Shirt - Dragon Ball Z" description="Dragon Ball Z themed t-shirt for anime enthusiasts" productRating="4.2" productTypeId="FINISHED_GOOD" productPrice="27.99"/>
+
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="COLOR_WHITE" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="COLOR_GRAY" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="COLOR_BLACK" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="COLOR_RED" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="COLOR_GREEN" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="COLOR_BLUE" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="COLOR_YELLOW" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="SIZE_S" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="SIZE_M" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="SIZE_L" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="SIZE_XL" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
+    <MilerProductFeatureAppl productId="ANIME_TSHIRT_001" productFeatureId="SIZE_XXL" fromDate="2024-03-01 00:00:00" thruDate="2024-12-31 00:00:00"/>
 
 </entity-engine-xml>
