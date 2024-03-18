@@ -42,7 +42,7 @@ under the License.
     </entity>
     <entity entity-name="MilerProductType" package-name="org.apache.ofbiz.ofbiztutorial.miler">
         <field name="productTypeId" type="id"/>
-        <field name="parentProductTypeId" type="id"/>
+        <field name="parentTypeId" type="id"/>
         <field name="description" type="description"/>
         <prim-key field="productTypeId"/>
         <relation type="one" fk-name="MILER_PROD_TYPE_PARENT" rel-entity-name="MilerProductType">
@@ -54,16 +54,16 @@ under the License.
         <field name="productFeatureTypeId" type="id"/>
         <field name="description" type="description"/>
         <prim-key field="productFeatureId"/>
-        <relation type="one" fk-name="MILER_PROD_FEATURE" rel-entity-name="ProductFeatureType">
+        <relation type="one" fk-name="MILER_PROD_FEATURE" rel-entity-name="MilerProductFeatureType">
             <key-map field-name="productFeatureTypeId"/>
         </relation>
     </entity>
     <entity entity-name="MilerProductFeatureType" package-name="org.apache.ofbiz.ofbiztutorial.miler">
         <field name="productFeatureTypeId" type="id"/>
-        <field name="parentProdFTypeId" type="id"/>
+        <field name="parentTypeId" type="id"/>
         <field name="description" type="description"/>
-        <prim-key field="productTypeId"/>
-        <relation type="one" fk-name="MILER_PROD_FEAT_TYPE_PARENT" rel-entity-name="MilerProductType">
+        <prim-key field="productFeatureTypeId"/>
+        <relation type="one" fk-name="MILER_PROD_FEAT_TYPE_PARENT" rel-entity-name="MilerProductFeatureType">
             <key-map field-name="parentTypeId" rel-field-name="productFeatureTypeId"/>
         </relation>
     </entity>
