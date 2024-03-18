@@ -28,6 +28,11 @@ under the License.
         <description>
             Dummy service to prevent empty files and syntax error - Remove when the 1st real service will be added here 
         </description>
-    </service> 
-    
+    </service>
+    <service name="addMilerProduct" engine="entity-auto" default-entity-name="MilerProduct" auth="true" invoke="create">
+        <description>This is a service to add Products to MilerProducts entity.</description>
+        <auto-attributes mode="IN" include="pk" optional="false"/>
+        <auto-attributes mode="IN" include="nonpk" optional="false"/>
+        <override name="description" optional="true"/>
+    </service>
 </services>
