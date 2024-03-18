@@ -27,5 +27,59 @@ under the License.
     <description>None</description>
     <copyright></copyright>
     <version></version>
-
+    
+    <entity entity-name="MilerProduct" package-name="org.apache.ofbiz.ofbiztutorial.miler">
+        <field name="productId" type="id"/>
+        <field name="productName" type="name"/>
+        <field name="description" type="description"/>
+        <field name="productRating" type="fixed-point"/>
+        <field name="productTypeId" type="id"/>
+        <field name="productPrice" type="currency-precise"/>
+        <prim-key field="productId"/>
+        <relation type="one" fk-name="MILER_PROD_TYPE" rel-entity-name="MilerProductType">
+            <key-map field-name="productTypeId"/>
+        </relation>
+    </entity>
+    <entity entity-name="MilerProductType" package-name="org.apache.ofbiz.ofbiztutorial.miler">
+        <field name="productTypeId" type="id"/>
+        <field name="parentProductTypeId" type="id"/>
+        <field name="description" type="description"/>
+        <prim-key field="productTypeId"/>
+        <relation type="one" fk-name="MILER_PROD_TYPE_PARENT" rel-entity-name="MilerProductType">
+            <key-map field-name="parentTypeId" rel-field-name="productTypeId"/>
+        </relation>
+    </entity>
+    <entity entity-name="MilerProductFeature" package-name="org.apache.ofbiz.ofbiztutorial.miler">
+        <field name="productFeatureId" type="id"/>
+        <field name="productFeatureTypeId" type="id"/>
+        <field name="description" type="description"/>
+        <prim-key field="productFeatureId"/>
+        <relation type="one" fk-name="MILER_PROD_FEATURE" rel-entity-name="ProductFeatureType">
+            <key-map field-name="productFeatureTypeId"/>
+        </relation>
+    </entity>
+    <entity entity-name="MilerProductFeatureType" package-name="org.apache.ofbiz.ofbiztutorial.miler">
+        <field name="productFeatureTypeId" type="id"/>
+        <field name="parentProdFTypeId" type="id"/>
+        <field name="description" type="description"/>
+        <prim-key field="productTypeId"/>
+        <relation type="one" fk-name="MILER_PROD_FEAT_TYPE_PARENT" rel-entity-name="MilerProductType">
+            <key-map field-name="parentTypeId" rel-field-name="productFeatureTypeId"/>
+        </relation>
+    </entity>
+    <entity entity-name="MilerProductFeatureAppl" package-name="org.apache.ofbiz.ofbiztutorial.miler">
+        <field name="productId" type="id"/>
+        <field name="productFeatureId" type="id"/>
+        <field name="fromDate" type="date-time"/>
+        <field name="thruDate" type="date-time"/>
+        <prim-key field="productId"/>
+        <prim-key field="productFeatureId"/>
+        <prim-key field="fromDate"/>
+        <relation type="one" fk-name="MILER_PROD_FEAT_APPL_PROD" rel-entity-name="MilerProduct">
+            <key-map field-name="productId"/>
+        </relation>
+        <relation type="one" fk-name="MILER_PROD_FEAT_APPL_FEAT" rel-entity-name="MilerProductFeature">
+            <key-map field-name="productFeatureId"/>
+        </relation>
+    </entity>
 </entitymodel>
