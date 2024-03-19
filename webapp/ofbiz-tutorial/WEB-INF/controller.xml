@@ -47,6 +47,9 @@ under the License.
         <response name="success" type="view" value="main">
         </response>
     </request-map>
+    <request-map uri="FindMilerProduct"><security https="true" auth="true"/><response name="success" type="view" value="FindMilerProduct"/></request-map>
+
     <!-- View Mappings -->
+    <view-map name="FindMilerProduct" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#FindMilerProduct"/>
     <view-map name="main" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#main"/>
 </site-conf>
