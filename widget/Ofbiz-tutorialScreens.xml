@@ -30,6 +30,9 @@ under the License.
                 <decorator-screen name="Ofbiz-tutorialCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <label text="Hello World!! I am learning how to render screens in Apache Ofbiz!! "/>
+                        <screenlet title="Add Products">
+                            <include-form name="AddMilerProduct" location="component://ofbiz-tutorial/widget/Ofbiz-tutorialForms.xml"/>
+                        </screenlet>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
