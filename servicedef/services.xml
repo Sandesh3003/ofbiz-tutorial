@@ -35,7 +35,7 @@ under the License.
         <auto-attributes mode="IN" include="nonpk" optional="false"/>
         <override name="description" optional="true"/>
     </service>
-    <service name="addMilerProductByJavaService" engine="java" location="org.apache.ofbiz.ofbiztutorial.miler.MilerServices"
+    <service name="addMilerProductByJavaService" engine="java" location="org.apache.ofbiz.ofbiztutorial.miler.services.MilerServices"
              invoke="addMilerProductByJava" auth="true" default-entity-name="MilerProduct">
         <description>Add products using java servic</description>
         <auto-attributes mode="IN" include="nonpk" optional="false"/>

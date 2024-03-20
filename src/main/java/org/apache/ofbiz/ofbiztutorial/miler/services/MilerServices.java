@@ -1,4 +1,4 @@
-package org.apache.ofbiz.ofbiztutorial.miler;
+package org.apache.ofbiz.ofbiztutorial.miler.services;
 import java.util.Map;
 
 import org.apache.ofbiz.base.util.Debug;

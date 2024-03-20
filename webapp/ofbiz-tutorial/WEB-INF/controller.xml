@@ -43,7 +43,7 @@ under the License.
     <request-map uri="main"><security https="true" auth="true"/><response name="success" type="view" value="main"/></request-map>
     <request-map uri="addMilerProduct">
         <security auth="true" https="true"/>
-        <event type="service" invoke="addMilerProductByJavaService"/>
+        <event type="java" path="org.apache.ofbiz.ofbiztutorial.miler.events.MilerEvents" invoke="addMilerProductEvent"/>
         <response name="success" type="view" value="main">
         </response>
     </request-map>
