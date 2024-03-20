@@ -42,4 +42,11 @@ under the License.
         <auto-attributes mode="OUT" include="pk" optional="false"/>
         <override name="description" optional="true"/>
     </service>
+    <service name="addMilerProductByGroovyService" engine="groovy" default-entity-name="MilerProduct"
+             location="component://ofbiz-tutorial/groovyScripts/MilerServices.groovy" invoke="addMilerProductByGroovy"
+             auth="true">
+        <auto-attributes mode="IN" include="nonpk" optional="false"/>
+        <auto-attributes mode="OUT" include="pk" optional="false"/>
+        <override name="description" optional="true"/>
+    </service>
 </services>
