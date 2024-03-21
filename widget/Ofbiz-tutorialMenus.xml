@@ -22,5 +22,6 @@ under the License.
     <menu name="MainAppBar" title="${uiLabelMap.Ofbiz-tutorialApplication}" extends="CommonAppBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
         <menu-item name="main" title="Home"><link target="main"/></menu-item>
         <menu-item name="findMilerProduct" title="${uiLabelMap.MilerProductFind}"><link target="FindMilerProduct"/></menu-item>
+        <menu-item name="addMilerProductFtl" title="${uiLabelMap.MilerProductAddFtl}"><link target="AddMilerProductFtl"/></menu-item>
     </menu>
 </menus>

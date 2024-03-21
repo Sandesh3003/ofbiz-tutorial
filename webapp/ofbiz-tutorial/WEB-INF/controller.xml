@@ -49,7 +49,12 @@ under the License.
     </request-map>
     <request-map uri="FindMilerProduct"><security https="true" auth="true"/><response name="success" type="view" value="FindMilerProduct"/></request-map>
 
+    <request-map uri="AddMilerProductFtl">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="AddMilerProductFtl"/>
+    </request-map>
     <!-- View Mappings -->
+    <view-map name="AddMilerProductFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#AddMilerProductFtl"/>
     <view-map name="FindMilerProduct" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#FindMilerProduct"/>
     <view-map name="main" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#main"/>
 </site-conf>

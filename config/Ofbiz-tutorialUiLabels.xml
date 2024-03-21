@@ -39,4 +39,40 @@ under the License.
         <value xml:lang="zh">不允许你浏览这个页面。</value>
         <value xml:lang="zh-TW">不允許您檢視這個頁面.</value>
     </property>
+    <property key="MilerProductFind">
+        <value xml:lang="en">Find Miler Product</value>
+    </property>
+    <property key="MilerProductAddFtl">
+        <value xml:lang="en">Add Miler Product FTL</value>
+    </property>
+    <property key="Ofbiz-tutorialAddMilerProductServiceByFtl">
+        <value xml:lang="en">Add Miler Product Service by FTL</value>
+    </property>
+    <property key="Ofbiz-tutorialListMilerProduct">
+        <value xml:lang="en">List Miler Product</value>
+    </property>
+    <property key="MilerProductId">
+        <value xml:lang="en">Product ID</value>
+    </property>
+
+    <property key="MilerProductType">
+        <value xml:lang="en">Product Type</value>
+    </property>
+
+    <property key="MilerProductName">
+        <value xml:lang="en">Product Name</value>
+    </property>
+
+    <property key="MilerProductDescription">
+        <value xml:lang="en">Product Description</value>
+    </property>
+
+    <property key="MilerProductPrice">
+        <value xml:lang="en">Product Price</value>
+    </property>
+
+    <property key="MilerProductRating">
+        <value xml:lang="en">Product Rating</value>
+    </property>
+
 </resource>

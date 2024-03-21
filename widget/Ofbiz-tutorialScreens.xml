@@ -27,11 +27,42 @@ under the License.
                 <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
             </actions>
             <widgets>
-                <decorator-screen name="Ofbiz-tutorialCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <label text="Hello World!! I am learning how to render screens in Apache Ofbiz!! "/>
                         <screenlet title="Add Products">
                             <include-form name="AddMilerProduct" location="component://ofbiz-tutorial/widget/Ofbiz-tutorialForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="AddMilerProductFtl">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleAddMilerProduct"/>
+                <set field="headerItem" value="addMilerProductFtl"/>
+                <script location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/crud/ListMilerProduct.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+<!--                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialListMilerProductFtl}"/>-->
+                        <screenlet title="${uiLabelMap.Ofbiz-tutorialListMilerProduct}">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/crud/ListMilerProduct.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet>
+<!--                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialAddMilerProductFtl}"/>-->
+                        <screenlet title="${uiLabelMap.Ofbiz-tutorialAddMilerProductServiceByFtl}">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/crud/AddMilerProduct.ftl"/>
+                                </html>
+                            </platform-specific>
                         </screenlet>
                     </decorator-section>
                 </decorator-screen>
