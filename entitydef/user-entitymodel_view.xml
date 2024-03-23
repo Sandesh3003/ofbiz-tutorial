@@ -1,0 +1,61 @@
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="https://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>View Entity of Custom UserMgr application</title>
+    <description>None</description>
+    <copyright></copyright>
+    <version></version>
+    
+    <view-entity entity-name="UserAndParty" package-name="org.apache.ofbiz.user">
+        <member-entity entity-alias="UL" entity-name="UserLogin"/>
+        <member-entity entity-alias="P" entity-name="Person"/>
+        <member-entity entity-alias="PCM" entity-name="PartyContactMech"/>
+        <member-entity entity-alias="PA" entity-name="PostalAddress"/>
+        <member-entity entity-alias="TN" entity-name="TelecomNumber"/>
+        <member-entity entity-alias="CM" entity-name="ContactMech"/>
+        <member-entity entity-alias="PCMP" entity-name="PartyContactMechPurpose"/>
+        <member-entity entity-alias="ULSG" entity-name="UserLoginSecurityGroup"/>
+        <alias name="userLoginId" entity-alias="UL" field="userLoginId" prim-key=""/>
+        <alias name="partyId" entity-alias="P" field="partyId"/>
+        <alias name="firstName" entity-alias="P" field="firstName"/>
+        <alias name="middleName" entity-alias="P" field="middleName"/>
+        <alias name="lastName" entity-alias="P" field="lastName"/>
+        <alias name="gender" entity-alias="P" field="gender"/>
+        <alias name="birthDate" entity-alias="P" field="birthDate"/>
+        <alias name="contactMechId" entity-alias="PCM" field="contactMechId"/>
+        <alias name="emailAddress" entity-alias="CM" field="infoString"/>
+        <alias name="address1" entity-alias="PA" field="address1"/>
+        <alias name="address2" entity-alias="PA" field="address2"/>
+        <alias name="city" entity-alias="PA" field="city"/>
+        <alias name="postalCode" entity-alias="PA" field="postalCode"/>
+        <alias name="countryGeoId" entity-alias="PA"/>
+        <alias name="countryCode" entity-alias="TN"/>
+        <alias name="areaCode" entity-alias="TN"/>
+        <alias name="contactNumber" entity-alias="TN"/>
+        <alias name="groupId" entity-alias="ULSG"/>
+        <view-link entity-alias="UL" rel-entity-alias="P">
+            <key-map field-name="partyId"/>
+        </view-link>
+        <view-link entity-alias="P" rel-entity-alias="PCM">
+            <key-map field-name="partyId"/>
+        </view-link>
+        <view-link entity-alias="PCM" rel-entity-alias="CM" rel-optional="true">
+            <key-map field-name="contactMechId"/>
+        </view-link>
+        <view-link entity-alias="PCM" rel-entity-alias="PA" rel-optional="true">
+            <key-map field-name="contactMechId"/>
+        </view-link>
+        <view-link entity-alias="PCM" rel-entity-alias="TN" rel-optional="true">
+            <key-map field-name="contactMechId"/>
+        </view-link>
+        <view-link entity-alias="PCM" rel-entity-alias="PCMP" rel-optional="true">
+            <key-map field-name="partyId"/>
+            <key-map field-name="contactMechId"/>
+        </view-link>
+        <view-link entity-alias="UL" rel-entity-alias="ULSG" rel-optional="true">
+            <key-map field-name="userLoginId"/>
+        </view-link>
+    </view-entity>
+</entitymodel>
