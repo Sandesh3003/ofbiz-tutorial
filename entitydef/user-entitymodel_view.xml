@@ -35,10 +35,10 @@
         <alias name="areaCode" entity-alias="TN"/>
         <alias name="contactNumber" entity-alias="TN"/>
         <alias name="groupId" entity-alias="ULSG"/>
-        <view-link entity-alias="UL" rel-entity-alias="P">
+        <view-link entity-alias="UL" rel-entity-alias="P" rel-optional="true">
             <key-map field-name="partyId"/>
         </view-link>
-        <view-link entity-alias="P" rel-entity-alias="PCM">
+        <view-link entity-alias="P" rel-entity-alias="PCM" rel-optional="true">
             <key-map field-name="partyId"/>
         </view-link>
         <view-link entity-alias="PCM" rel-entity-alias="CM" rel-optional="true">
