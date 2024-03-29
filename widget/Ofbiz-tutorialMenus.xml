@@ -23,5 +23,6 @@ under the License.
         <menu-item name="main" title="Home"><link target="main"/></menu-item>
         <menu-item name="findMilerProduct" title="${uiLabelMap.MilerProductFind}"><link target="FindMilerProduct"/></menu-item>
         <menu-item name="addMilerProductFtl" title="${uiLabelMap.MilerProductAddFtl}"><link target="AddMilerProductFtl"/></menu-item>
+        <menu-item name="createUserFtl" title="${uiLabelMap.CreateUserFtl}"><link target="CreateUserFtl"/></menu-item>
     </menu>
 </menus>

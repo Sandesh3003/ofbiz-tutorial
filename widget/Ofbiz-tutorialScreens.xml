@@ -102,5 +102,28 @@ under the License.
             </widgets>
         </section>
     </screen>
+    <screen name="CreateUserFtl">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Ofbiz-tutorialCreateUserFtl"/>
+                <set field="headerItem" value="createUserFtl"/>
+                <script location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/ListUsers.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Ofbiz-tutorialCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialListUsers}"/>
+                        <platform-specific>
+                            <html><html-template location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/ListUsers.ftl"/></html>
+                        </platform-specific>
+                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialCreateUserFtl}"/>
+                        <platform-specific>
+                            <html><html-template location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/CreateUser.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 
 </screens>

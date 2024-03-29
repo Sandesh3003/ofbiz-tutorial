@@ -1,0 +1,34 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="https://ofbiz.apache.org/dtds/services.xsd">
+    <description>Ofbiz-tutorial Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+    <service name="fetchAllUserData" engine="java" location="org.apache.ofbiz.ofbiztutorial.usermgr.services.UserMgrServices"
+             invoke="fetchAllUserData" auth="true" default-entity-name="UserAndParty">
+        <auto-attributes mode="IN" include="nonpk" optional="true"/>
+    </service>
+    <service name="createUserByJavaService" engine="java" location="org.apache.ofbiz.ofbiztutorial.usermgr.services.UserMgrServices"
+             invoke="createUserByJavaService" auth="false" export="true" action="POST">
+        <attribute name="userLogin" type="Map" mode="IN"/>
+        <attribute name="userLoginId" type="String" mode="IN" optional="false"/>
+        <attribute name="password" type="String" mode="IN" optional="false"/>
+        <attribute name="confirmPassword" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="middleName" type="String" mode="IN" optional="true"/>
+<!--        <attribute name="birthDate" type="String" mode="IN" optional="false"/>-->
+        <attribute name="address1" type="String" mode="IN" optional="false"/>
+        <attribute name="address2" type="String" mode="IN" optional="true"/>
+        <attribute name="city" type="String" mode="IN" optional="false"/>
+        <attribute name="postalCode" type="String" mode="IN" optional="false"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>
+        <attribute name="countryCode" type="String" mode="IN" optional="false"/>
+        <attribute name="areaCode" type="String" mode="IN" optional="false"/>
+        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>
+        <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
+<!--        <attribute name="responseMessage" type="String" mode="OUT"/>-->
+<!--        <attribute name="errorMessage" type="String" mode="OUT"/>-->
+        <attribute name="newUserLogin" type="Map" mode="OUT"/>
+        <attribute name="partyId" type="String" mode="OUT"/>
+    </service>
+</services>
