@@ -31,4 +31,28 @@
         <attribute name="newUserLogin" type="Map" mode="OUT"/>
         <attribute name="partyId" type="String" mode="OUT"/>
     </service>
+    <service name="createPostalAddressJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
+             invoke="createPostalAddress">
+        <attribute name="address1" type="String" mode="IN" optional="false"/>
+        <attribute name="address2" type="String" mode="IN" optional="true"/>
+        <attribute name="city" type="String" mode="IN" optional="false"/>
+        <attribute name="postalCode" type="String" mode="IN" optional="false"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
+    </service>
+    <service name="createTelecomNumberJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
+             invoke="createTelecomNumber">
+        <attribute name="countryCode" type="String" mode="IN" optional="false"/>
+        <attribute name="areaCode" type="String" mode="IN" optional="false"/>
+        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
+    </service>
+    <service name="createEmailAddressJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
+             invoke="createEmailAddress">
+        <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
+    </service>
 </services>

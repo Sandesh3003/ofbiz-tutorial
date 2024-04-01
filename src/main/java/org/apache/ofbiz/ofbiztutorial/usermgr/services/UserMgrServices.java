@@ -7,6 +7,8 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.ServiceUtil;
+import org.apache.ofbiz.base.util.UtilDateTime;
+
 
 import java.util.Map;
 
@@ -59,6 +61,21 @@ public class UserMgrServices{
             return createPersonResult;
         }
         GenericValue newUserLogin = (GenericValue) createPersonResult.get("newUserLogin");
+        Map<String, Object> addUserLoginSecurityGroup = Map.of(
+                "userLoginId", userLoginId,
+                "groupId", "PARTYADMIN",
+                "userLogin", userLogin,
+                "fromDate", UtilDateTime.nowDate()
+        );
+        Map<String, Object> addSecurityGroupResult=null;
+        try{
+            addSecurityGroupResult = dctx.getDispatcher().runSync("addUserLoginToSecurityGroup", addUserLoginSecurityGroup);
+        } catch (GenericServiceException e){
+            return ServiceUtil.returnError("Error assigning security group: "+e.getMessage());
+        }
+        if(ServiceUtil.isError(addSecurityGroupResult)){
+            return addSecurityGroupResult;
+        }
         // Invoke createPostalAddress service
         Map<String, Object> createPostalAddressParams = Map.of(
                 "address1", address1,
@@ -66,11 +83,11 @@ public class UserMgrServices{
                 "city", city,
                 "postalCode", postalCode,
                 "countryGeoId", countryGeoId,
-                "userLogin", userLogin
+                "userLogin", newUserLogin
         );
         Map<String, Object> createPostalAddressResult = null;
         try {
-            createPostalAddressResult = dctx.getDispatcher().runSync("createPostalAddress", createPostalAddressParams);
+            createPostalAddressResult = dctx.getDispatcher().runSync("createPostalAddressJava", createPostalAddressParams);
         } catch (GenericServiceException e) {
             return ServiceUtil.returnError("Error creating postal address: " + e.getMessage());
         }
@@ -83,11 +100,11 @@ public class UserMgrServices{
                 "countryCode", countryCode,
                 "areaCode", areaCode,
                 "contactNumber", contactNumber,
-                "userLogin", userLogin
+                "userLogin", newUserLogin
         );
         Map<String, Object> createTelecomNumberResult = null;
         try {
-            createTelecomNumberResult = dctx.getDispatcher().runSync("createTelecomNumber", createTelecomNumberParams);
+            createTelecomNumberResult = dctx.getDispatcher().runSync("createTelecomNumberJava", createTelecomNumberParams);
         } catch (GenericServiceException e) {
             return ServiceUtil.returnError("Error creating telecom number: " + e.getMessage());
         }
@@ -97,10 +114,10 @@ public class UserMgrServices{
 
         // Invoke createEmailAddress service
         Map<String, Object> createEmailAddressParams = UtilMisc.toMap("emailAddress", emailAddress,
-                "userLogin", userLogin);
+                "userLogin", newUserLogin);
         Map<String, Object> createEmailAddressResult = null;
         try {
-            createEmailAddressResult = dctx.getDispatcher().runSync("createEmailAddress", createEmailAddressParams);
+            createEmailAddressResult = dctx.getDispatcher().runSync("createEmailAddressJava", createEmailAddressParams);
         } catch (GenericServiceException e) {
             return ServiceUtil.returnError("Error creating email address: " + e.getMessage());
         }

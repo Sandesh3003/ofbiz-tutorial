@@ -30,7 +30,7 @@ public class UserEvents {
         String lastName = request.getParameter("lastName");
         String middleName = request.getParameter("middleName");
 //        String gender = request.getParameter("gender");
-        String birthDate = request.getParameter("birthDate");
+//        String birthDate = request.getParameter("birthDate");
         String address1 = request.getParameter("address1");
         String address2 = request.getParameter("address2");
         String city = request.getParameter("city");
@@ -59,9 +59,9 @@ public class UserEvents {
 //        if(UtilValidate.isEmpty(gender)){
 //            return ServiceUtil.returnError("Gender cannot be empty!!").toString();
 //        }
-        if (!UtilValidate.isDate(birthDate)) {
-            return ServiceUtil.returnError("Incorrect Date Format in Birth Date!!!" + birthDate).toString();
-        }
+//        if (!UtilValidate.isDate(birthDate)) {
+//            return ServiceUtil.returnError("Incorrect Date Format in Birth Date!!!" + birthDate).toString();
+//        }
         if(UtilValidate.isEmpty(address1)){
             return ServiceUtil.returnError("Address Line 1 cannot be empty!!").toString();
         }
@@ -93,7 +93,7 @@ public class UserEvents {
             serviceParams.put("firstName", firstName);
             serviceParams.put("lastName", lastName);
             serviceParams.put("middleName", middleName);
-            serviceParams.put("birthDate", birthDate);
+//            serviceParams.put("birthDate", birthDate);
             serviceParams.put("address1", address1);
             serviceParams.put("address2", address2);
             serviceParams.put("city", city);
