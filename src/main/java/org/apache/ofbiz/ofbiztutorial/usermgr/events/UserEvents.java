@@ -22,7 +22,6 @@ public class UserEvents {
         // Extract data from the form
         HttpSession session = request.getSession();
         GenericValue userLogin = (GenericValue) session.getAttribute("userLogin");
-        System.out.println("userLogin "+userLogin+"========================");
         String userLoginId = request.getParameter("userLoginId");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");

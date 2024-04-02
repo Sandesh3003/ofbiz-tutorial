@@ -35,7 +35,6 @@ public class UserMgrServices{
         String emailAddress = (String) context.get("emailAddress");
         GenericValue userLogin = (GenericValue) context.get("userLogin");
 
-        System.out.println("============="+userLogin+"===============");
         // Check if passwords match
         if (!password.equals(confirmPassword)) {
             return ServiceUtil.returnError("Passwords do not match.");
