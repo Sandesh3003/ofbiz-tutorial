@@ -41,7 +41,7 @@ public class UserMgrServices{
         }
 
         // Invoke createPersonAndUserLogin service to create user and associated person
-        Map<String, Object> createPersonParams = Map.of(
+        Map<String, Object> createPersonParams = UtilMisc.toMap(
                 "userLoginId", userLoginId,
                 "currentPassword", password,
                 "currentPasswordVerify", confirmPassword,
@@ -60,7 +60,7 @@ public class UserMgrServices{
             return createPersonResult;
         }
         GenericValue newUserLogin = (GenericValue) createPersonResult.get("newUserLogin");
-        Map<String, Object> addUserLoginSecurityGroup = Map.of(
+        Map<String, Object> addUserLoginSecurityGroup = UtilMisc.toMap(
                 "userLoginId", userLoginId,
                 "groupId", "PARTYADMIN",
                 "userLogin", userLogin,
@@ -76,7 +76,7 @@ public class UserMgrServices{
             return addSecurityGroupResult;
         }
         // Invoke createPostalAddress service
-        Map<String, Object> createPostalAddressParams = Map.of(
+        Map<String, Object> createPostalAddressParams = UtilMisc.toMap(
                 "address1", address1,
                 "address2", address2,
                 "city", city,
@@ -95,7 +95,7 @@ public class UserMgrServices{
         }
 
         // Invoke createTelecomNumber service
-        Map<String, Object> createTelecomNumberParams = Map.of(
+        Map<String, Object> createTelecomNumberParams = UtilMisc.toMap(
                 "countryCode", countryCode,
                 "areaCode", areaCode,
                 "contactNumber", contactNumber,
