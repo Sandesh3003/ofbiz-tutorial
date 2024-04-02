@@ -3,10 +3,7 @@
     <description>Ofbiz-tutorial Services</description>
     <vendor></vendor>
     <version>1.0</version>
-    <service name="fetchAllUserData" engine="java" location="org.apache.ofbiz.ofbiztutorial.usermgr.services.UserMgrServices"
-             invoke="fetchAllUserData" auth="true" default-entity-name="UserAndParty">
-        <auto-attributes mode="IN" include="nonpk" optional="true"/>
-    </service>
+
     <service name="createUserByJavaService" engine="java" location="org.apache.ofbiz.ofbiztutorial.usermgr.services.UserMgrServices"
              invoke="createUserByJavaService" auth="false" export="true" action="POST">
         <attribute name="userLogin" type="Map" mode="IN"/>
