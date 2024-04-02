@@ -20,19 +20,17 @@
            <script type="text/javascript" src="${StringUtil.wrapString(javaScript)}"></script>
        </#list>
   </#if>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Teko&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
-
-
 
   <!-- Breadcrumbs -->
   <div class="container mt-4">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<@ofbizUrl>main</@ofbizUrl>">Main</a></li>
-        <#if StringUtil.wrapString(uiLabelMap.titleProperty)??>
-             <li class="breadcrumb-item active" aria-current="page">${StringUtil.wrapString(uiLabelMap.titleProperty)}</li>
+        <li class="breadcrumb-item"><a href="<@ofbizUrl>main</@ofbizUrl>">Home</a></li>
+        <#if uiLabelMap[titleProperty]??>
+             <li class="breadcrumb-item active" aria-current="page">${StringUtil.wrapString(uiLabelMap[titleProperty])}</li>
         <#else>
             <li class="breadcrumb-item active" aria-current="page">Data</li>
         </#if>

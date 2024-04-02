@@ -61,3 +61,29 @@
 .table-custom tbody tr:hover {
     background-color: #f5f5f5;
 }
+
+.panel {
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.panel-heading {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  padding: 0.5rem;
+}
+.panel-body {
+  font-family: 'Roboto', sans-serif;
+  padding: 0.5rem;
+}
+
+.page-header{
+    font-family: 'Teko', sans-serif;
+    text-transform: uppercase;
+}

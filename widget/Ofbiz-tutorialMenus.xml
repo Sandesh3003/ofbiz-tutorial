@@ -24,5 +24,6 @@ under the License.
         <menu-item name="addMilerProductFtl" title="${uiLabelMap.MilerProductAddFtl}"><link target="AddMilerProductFtl"/></menu-item>
         <menu-item name="createUserFtl" title="${uiLabelMap.CreateUserFtl}"><link target="CreateUserFtl"/></menu-item>
         <menu-item name="listUserFtl" title="${uiLabelMap.ListUserFtl}"><link target="ListUserFtl"/></menu-item>
+        <menu-item name="listUserViewFtl" title="${uiLabelMap.ListUserViewFtl}"><link target="ListUserViewFtl"/></menu-item>
     </menu>
 </menus>

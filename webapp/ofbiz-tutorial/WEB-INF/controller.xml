@@ -68,7 +68,17 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="ListUserFtl"/>
     </request-map>
+    <request-map uri="ListUserViewFtl">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ListUserViewFtl"/>
+    </request-map>
+    <request-map uri="ViewProfile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ViewProfileFtl"/>
+    </request-map>
     <!-- View Mappings -->
+    <view-map name="ViewProfileFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#ViewProfileFtl"/>
+    <view-map name="ListUserViewFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#ListUserViewFtl"/>
     <view-map name="ListUserFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#ListUserFtl"/>
     <view-map name="CreateUserFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#CreateUserFtl"/>
     <view-map name="AddMilerProductFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#AddMilerProductFtl"/>

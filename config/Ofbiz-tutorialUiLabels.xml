@@ -74,5 +74,13 @@ under the License.
     <property key="MilerProductRating">
         <value xml:lang="en">Product Rating</value>
     </property>
-
+    <property key="Ofbiz-tutorialCreateUserFtl">
+        <value xml:lang="en">Create User</value>
+    </property>
+    <property key="Ofbiz-tutorialListUserFtl">
+        <value xml:lang="en">List User</value>
+    </property>
+    <property key="Ofbiz-tutorialViewUserFtl">
+        <value xml:lang="en">View User Profile</value>
+    </property>
 </resource>

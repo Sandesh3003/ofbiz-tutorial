@@ -17,19 +17,21 @@
         <member-entity entity-alias="CM" entity-name="ContactMech"/>
         <member-entity entity-alias="PCMP" entity-name="PartyContactMechPurpose"/>
         <member-entity entity-alias="ULSG" entity-name="UserLoginSecurityGroup"/>
-        <alias name="userLoginId" entity-alias="UL" field="userLoginId" prim-key=""/>
-        <alias name="partyId" entity-alias="P" field="partyId"/>
-        <alias name="firstName" entity-alias="P" field="firstName"/>
-        <alias name="middleName" entity-alias="P" field="middleName"/>
-        <alias name="lastName" entity-alias="P" field="lastName"/>
-        <alias name="gender" entity-alias="P" field="gender"/>
-        <alias name="birthDate" entity-alias="P" field="birthDate"/>
-        <alias name="contactMechId" entity-alias="PCM" field="contactMechId"/>
+        <alias name="userLoginId" entity-alias="UL" field="userLoginId" prim-key="true"/>
+        <alias name="partyId" entity-alias="P" prim-key="true"/>
+        <alias name="firstName" entity-alias="P"/>
+        <alias name="middleName" entity-alias="P"/>
+        <alias name="lastName" entity-alias="P"/>
+        <alias name="gender" entity-alias="P"/>
+        <alias name="birthDate" entity-alias="P"/>
+        <alias name="contactMechId" entity-alias="PCM" prim-key="true"/>
+        <alias name="contactMechTypeId" entity-alias="CM"/>
         <alias name="emailAddress" entity-alias="CM" field="infoString"/>
-        <alias name="address1" entity-alias="PA" field="address1"/>
-        <alias name="address2" entity-alias="PA" field="address2"/>
-        <alias name="city" entity-alias="PA" field="city"/>
-        <alias name="postalCode" entity-alias="PA" field="postalCode"/>
+        <alias name="contactMechPurposeTypeId" entity-alias="PCMP"/>
+        <alias name="address1" entity-alias="PA"/>
+        <alias name="address2" entity-alias="PA"/>
+        <alias name="city" entity-alias="PA"/>
+        <alias name="postalCode" entity-alias="PA"/>
         <alias name="countryGeoId" entity-alias="PA"/>
         <alias name="countryCode" entity-alias="TN"/>
         <alias name="areaCode" entity-alias="TN"/>

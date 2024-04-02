@@ -124,16 +124,57 @@ under the License.
     <screen name="ListUserFtl">
         <section>
             <actions>
-                <set field="titleProperty" value="Ofbiz-tutorialCreateUserFtl"/>
+                <set field="titleProperty" value="Ofbiz-tutorialListUserFtl"/>
                 <set field="headerItem" value="createUserFtl"/>
                 <script location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/ListUsers.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="Ofbiz-tutorialCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialListUsers}"/>
+                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialListUserFtl}"/>
                         <platform-specific>
                             <html><html-template location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/ListUsers.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ListUserViewFtl">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Ofbiz-tutorialListUserFtl"/>
+                <set field="headerItem" value="listUserFtl"/>
+                <script location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/ListUsers.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Ofbiz-tutorialCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialListUserFtl}"/>
+                        <platform-specific>
+                            <html><html-template location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/ListUsers_View.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ViewProfileFtl">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Ofbiz-tutorialViewUserFtl"/>
+                <set field="headerItem" value="viewUserFtl"/>
+                <set field="partyId" value="${parameters.partyId}"/>
+                <script location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/ViewUser.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="Ofbiz-tutorialCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label style="h4" text="${uiLabelMap.Ofbiz-tutorialViewUserFtl}"/>
+                        <platform-specific>
+                            <html><html-template location="component://ofbiz-tutorial/webapp/ofbiz-tutorial/usermgr/crud/UserProfile.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
