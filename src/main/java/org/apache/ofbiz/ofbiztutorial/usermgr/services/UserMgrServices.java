@@ -6,6 +6,7 @@ import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.GenericServiceException;
+import org.apache.ofbiz.service.ModelService;
 import org.apache.ofbiz.service.ServiceUtil;
 import org.apache.ofbiz.base.util.UtilDateTime;
 
@@ -18,8 +19,8 @@ public class UserMgrServices{
     public static Map<String, Object> createUserByJavaService(DispatchContext dctx, Map<String, ? extends Object> context) throws GenericServiceException {
         Map<String, Object> result = ServiceUtil.returnSuccess();
         String userLoginId = (String) context.get("userLoginId");
-        String password = (String) context.get("password");
-        String confirmPassword = (String) context.get("confirmPassword");
+        String currentPassword = (String) context.get("currentPassword");
+        String currentPasswordVerify = (String) context.get("currentPasswordVerify");
         String firstName = (String) context.get("firstName");
         String lastName = (String) context.get("lastName");
         String middleName = (String) context.get("middleName");
@@ -36,29 +37,31 @@ public class UserMgrServices{
         GenericValue userLogin = (GenericValue) context.get("userLogin");
 
         // Check if passwords match
-        if (!password.equals(confirmPassword)) {
+        if (!currentPassword.equals(currentPasswordVerify)) {
             return ServiceUtil.returnError("Passwords do not match.");
         }
 
         // Invoke createPersonAndUserLogin service to create user and associated person
-        Map<String, Object> createPersonParams = UtilMisc.toMap(
-                "userLoginId", userLoginId,
-                "currentPassword", password,
-                "currentPasswordVerify", confirmPassword,
-                "firstName", firstName,
-                "lastName", lastName,
-                "middleName", middleName
-//                "birthDate", birthDate
-        );
-        Map<String, Object> createPersonResult = null;
+//        Map<String, Object> createPersonParams = UtilMisc.toMap(
+//                "userLoginId", userLoginId,
+//                "currentPassword", password,
+//                "currentPasswordVerify", confirmPassworda,
+//                "firstName", firstName,
+//                "lastName", lastName,
+//                "middleName", middleName
+////                "birthDate", birthDate
+//        );
+        Map<String, Object> createPersonResult=null;
         try {
+            Map<String, Object> createPersonParams=dctx.makeValidContext("createPersonAndUserLogin", ModelService.IN_PARAM, context);
             createPersonResult = dctx.getDispatcher().runSync("createPersonAndUserLogin", createPersonParams);
+            if (ServiceUtil.isError(createPersonResult)) {
+                return createPersonResult;
+            }
         } catch (GenericServiceException e) {
             return ServiceUtil.returnError("Error creating person and user login: " + e.getMessage());
         }
-        if (ServiceUtil.isError(createPersonResult)) {
-            return createPersonResult;
-        }
+
         GenericValue newUserLogin = (GenericValue) createPersonResult.get("newUserLogin");
         Map<String, Object> addUserLoginSecurityGroup = UtilMisc.toMap(
                 "userLoginId", userLoginId,
@@ -66,62 +69,63 @@ public class UserMgrServices{
                 "userLogin", userLogin,
                 "fromDate", UtilDateTime.nowDate()
         );
-        Map<String, Object> addSecurityGroupResult=null;
         try{
-            addSecurityGroupResult = dctx.getDispatcher().runSync("addUserLoginToSecurityGroup", addUserLoginSecurityGroup);
+            Map<String, Object> addSecurityGroupResult = dctx.getDispatcher().runSync("addUserLoginToSecurityGroup", addUserLoginSecurityGroup);
+            if(ServiceUtil.isError(addSecurityGroupResult)){
+                return addSecurityGroupResult;
+            }
         } catch (GenericServiceException e){
             return ServiceUtil.returnError("Error assigning security group: "+e.getMessage());
         }
-        if(ServiceUtil.isError(addSecurityGroupResult)){
-            return addSecurityGroupResult;
-        }
+
         // Invoke createPostalAddress service
-        Map<String, Object> createPostalAddressParams = UtilMisc.toMap(
-                "address1", address1,
-                "address2", address2,
-                "city", city,
-                "postalCode", postalCode,
-                "countryGeoId", countryGeoId,
-                "userLogin", newUserLogin
-        );
-        Map<String, Object> createPostalAddressResult = null;
+//        Map<String, Object> createPostalAddressParams = UtilMisc.toMap(
+//                "address1", address1,
+//                "address2", address2,
+//                "city", city,
+//                "postalCode", postalCode,
+//                "countryGeoId", countryGeoId,
+//                "userLogin", newUserLogin
+//        );
         try {
-            createPostalAddressResult = dctx.getDispatcher().runSync("createPostalAddressJava", createPostalAddressParams);
+            Map<String, Object>  createPostalAddressParams=dctx.makeValidContext("createPostalAddressJava", ModelService.IN_PARAM, context);
+            createPostalAddressParams.replace("userLogin", newUserLogin);
+            Map<String, Object> createPostalAddressResult = dctx.getDispatcher().runSync("createPostalAddressJava", createPostalAddressParams);
+            if (ServiceUtil.isError(createPostalAddressResult)) {
+                return createPostalAddressResult;
+            }
         } catch (GenericServiceException e) {
             return ServiceUtil.returnError("Error creating postal address: " + e.getMessage());
         }
-        if (ServiceUtil.isError(createPostalAddressResult)) {
-            return createPostalAddressResult;
-        }
 
         // Invoke createTelecomNumber service
-        Map<String, Object> createTelecomNumberParams = UtilMisc.toMap(
-                "countryCode", countryCode,
-                "areaCode", areaCode,
-                "contactNumber", contactNumber,
-                "userLogin", newUserLogin
-        );
-        Map<String, Object> createTelecomNumberResult = null;
+//        Map<String, Object> createTelecomNumberParams = UtilMisc.toMap(
+//                "countryCode", countryCode,
+//                "areaCode", areaCode,
+//                "contactNumber", contactNumber,
+//                "userLogin", newUserLogin
+//        );
         try {
-            createTelecomNumberResult = dctx.getDispatcher().runSync("createTelecomNumberJava", createTelecomNumberParams);
+            Map<String, Object> createTelecomNumberParams = dctx.makeValidContext("createTelecomNumberJava", ModelService.IN_PARAM, context);
+            createTelecomNumberParams.replace("userLogin", newUserLogin);
+            Map<String, Object> createTelecomNumberResult= dctx.getDispatcher().runSync("createTelecomNumberJava", createTelecomNumberParams);
+            if (ServiceUtil.isError(createTelecomNumberResult)) {
+                return createTelecomNumberResult;
+            }
         } catch (GenericServiceException e) {
             return ServiceUtil.returnError("Error creating telecom number: " + e.getMessage());
         }
-        if (ServiceUtil.isError(createTelecomNumberResult)) {
-            return createTelecomNumberResult;
-        }
-
         // Invoke createEmailAddress service
-        Map<String, Object> createEmailAddressParams = UtilMisc.toMap("emailAddress", emailAddress,
-                "userLogin", newUserLogin);
-        Map<String, Object> createEmailAddressResult = null;
+
         try {
-            createEmailAddressResult = dctx.getDispatcher().runSync("createEmailAddressJava", createEmailAddressParams);
+            Map<String, Object> createEmailAddressParams = dctx.makeValidContext("createEmailAddressJava", ModelService.IN_PARAM, context);
+            createEmailAddressParams.replace("userLogin", newUserLogin);
+            Map<String, Object> createEmailAddressResult = dctx.getDispatcher().runSync("createEmailAddressJava", createEmailAddressParams);
+            if (ServiceUtil.isError(createEmailAddressResult)) {
+                return createEmailAddressResult;
+            }
         } catch (GenericServiceException e) {
             return ServiceUtil.returnError("Error creating email address: " + e.getMessage());
-        }
-        if (ServiceUtil.isError(createEmailAddressResult)) {
-            return createEmailAddressResult;
         }
 
         result.put("newUserLogin", newUserLogin);

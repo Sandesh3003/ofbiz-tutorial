@@ -6,45 +6,50 @@
 
     <service name="createUserByJavaService" engine="java" location="org.apache.ofbiz.ofbiztutorial.usermgr.services.UserMgrServices"
              invoke="createUserByJavaService" auth="false" export="true" action="POST">
-        <attribute name="userLogin" type="Map" mode="IN"/>
-        <attribute name="userLoginId" type="String" mode="IN" optional="false"/>
-        <attribute name="password" type="String" mode="IN" optional="false"/>
-        <attribute name="confirmPassword" type="String" mode="IN" optional="false"/>
-        <attribute name="firstName" type="String" mode="IN" optional="false"/>
-        <attribute name="lastName" type="String" mode="IN" optional="false"/>
-        <attribute name="middleName" type="String" mode="IN" optional="true"/>
-<!--        <attribute name="birthDate" type="String" mode="IN" optional="false"/>-->
-        <attribute name="address1" type="String" mode="IN" optional="false"/>
-        <attribute name="address2" type="String" mode="IN" optional="true"/>
-        <attribute name="city" type="String" mode="IN" optional="false"/>
-        <attribute name="postalCode" type="String" mode="IN" optional="false"/>
-        <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>
-        <attribute name="countryCode" type="String" mode="IN" optional="false"/>
-        <attribute name="areaCode" type="String" mode="IN" optional="false"/>
-        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>
+        <implements service="createPersonAndUserLogin"/>
+        <implements service="createPostalAddress"/>
+        <implements service="createTelecomNumber"/>
         <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
+<!--        <attribute name="userLogin" type="Map" mode="IN"/>-->
+<!--        <attribute name="userLoginId" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="password" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="confirmPassword" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="firstName" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="lastName" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="middleName" type="String" mode="IN" optional="true"/>-->
+<!--        <attribute name="birthDate" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="address1" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="address2" type="String" mode="IN" optional="true"/>-->
+<!--        <attribute name="city" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="postalCode" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="countryCode" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="areaCode" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>-->
 <!--        <attribute name="responseMessage" type="String" mode="OUT"/>-->
 <!--        <attribute name="errorMessage" type="String" mode="OUT"/>-->
-        <attribute name="newUserLogin" type="Map" mode="OUT"/>
-        <attribute name="partyId" type="String" mode="OUT"/>
+<!--        <attribute name="newUserLogin" type="Map" mode="OUT"/>-->
+<!--        <attribute name="partyId" type="String" mode="OUT"/>-->
     </service>
     <service name="createPostalAddressJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
              invoke="createPostalAddress">
-        <attribute name="address1" type="String" mode="IN" optional="false"/>
-        <attribute name="address2" type="String" mode="IN" optional="true"/>
-        <attribute name="city" type="String" mode="IN" optional="false"/>
-        <attribute name="postalCode" type="String" mode="IN" optional="false"/>
-        <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>
-        <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>
+        <implements service="createPostalAddress"/>
+<!--        <attribute name="address1" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="address2" type="String" mode="IN" optional="true"/>-->
+<!--        <attribute name="city" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="postalCode" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>-->
         <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
     </service>
     <service name="createTelecomNumberJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
              invoke="createTelecomNumber">
-        <attribute name="countryCode" type="String" mode="IN" optional="false"/>
-        <attribute name="areaCode" type="String" mode="IN" optional="false"/>
-        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>
-        <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>
-        <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
+        <implements service="createTelecomNumber"/>
+<!--        <attribute name="countryCode" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="areaCode" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>-->
+<!--        <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>-->
+<!--        <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>-->
     </service>
     <service name="createEmailAddressJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
              invoke="createEmailAddress">
