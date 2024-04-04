@@ -30,7 +30,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<@ofbizUrl>main</@ofbizUrl>">Home</a></li>
         <#if uiLabelMap[titleProperty]??>
-             <li class="breadcrumb-item active" aria-current="page">${StringUtil.wrapString(uiLabelMap[titleProperty])}</li>
+             <li class="breadcrumb-item active" aria-current="page">${uiLabelMap[titleProperty]}</li>
         <#else>
             <li class="breadcrumb-item active" aria-current="page">Data</li>
         </#if>

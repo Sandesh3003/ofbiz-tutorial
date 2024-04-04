@@ -7,10 +7,10 @@
                     <input type="text" class="form-control" id="userLoginId" name="userLoginId" placeholder="User Login ID" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                    <input type="password" class="form-control" id="currentPasswordVerify" name="currentPasswordVerify" placeholder="Confirm Password" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
