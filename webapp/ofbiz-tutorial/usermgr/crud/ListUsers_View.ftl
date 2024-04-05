@@ -1,5 +1,6 @@
 <div class="container mt-4">
     <div class="table-responsive">
+    <#if userList?has_content>
         <table class="table table-bordered table-striped table-hover table-custom">
             <thead class="thead-dark">
                 <tr>
@@ -14,7 +15,7 @@
                 <#list userList as user>
                     <tr>
                         <td ><a href="<@ofbizUrl>ViewProfile</@ofbizUrl>?partyId=${user.partyId!"N/A"}">${user.partyId!"N/A"}</a></td>
-                        <td>${user.userLoginId}</td>
+                        <td>${user.userLoginId!"N/A"}</td>
                         <td>${user.firstName!"N/A"}</td>
                         <td>${user.middleName!"N/A"}</td>
                         <td>${user.lastName!"N/A"}</td>
@@ -22,6 +23,10 @@
                 </#list>
             </tbody>
         </table>
+    <#else>
+        <h1>User List is empty!!</h1><br>
+        <h3>Click <a href="<@ofbizUrl>CreateUserFtl</@ofbizUrl>">here</a> to create users</h3>
+    </#if>
     </div>
 </div>
 

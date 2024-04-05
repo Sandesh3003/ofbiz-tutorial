@@ -40,6 +40,9 @@ public class UserEvents {
         if (UtilValidate.isEmpty(context.get("firstName"))) {
             errors.add("First Name cannot be empty!!");
         }
+        if(UtilValidate.isEmpty(context.get("gender"))){
+            errors.add("Gender cannot be left empty!!");
+        }
         if (UtilValidate.isEmpty(context.get("lastName"))) {
             errors.add("Last Name cannot be empty!!");
         }

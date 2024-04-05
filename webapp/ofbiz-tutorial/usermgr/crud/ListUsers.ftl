@@ -20,7 +20,7 @@
             <tbody id="userTableBody">
                 <#list userAndPartyList as user>
                     <tr>
-                        <td>${user.userLoginId}</td>
+                        <td>${user.userLoginId!"N/A"}</td>
                         <td>${user.firstName!"N/A"}</td>
                         <td>${user.lastName!"N/A"}</td>
                         <td>${user.emailAddress!"N/A"}</td>

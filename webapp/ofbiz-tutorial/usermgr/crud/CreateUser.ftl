@@ -21,7 +21,13 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Middle Name">
                 </div>
-
+                <div class="form-group">
+                    <select class="form-control" id="gender" name="gender">
+                        <option value="">Gender</option>
+                        <option value ="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="addressLine1" name="address1" placeholder="Address Line 1" required>
                 </div>
