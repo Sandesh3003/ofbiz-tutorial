@@ -15,15 +15,18 @@
     <service name="createPostalAddressJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
              invoke="createPostalAddress">
         <implements service="createPostalAddress"/>
+        <attribute name="partyId" type="String" mode="IN"/>
         <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
     </service>
 
     <service name="createTelecomNumberJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
              invoke="createTelecomNumber">
         <implements service="createTelecomNumber"/>
+        <attribute name="partyId" type="String" mode="IN"/>
     </service>
     <service name="createEmailAddressJava" engine="java" location="org.apache.ofbiz.party.contact.ContactMechServices"
              invoke="createEmailAddress">
+        <attribute name="partyId" type="String" mode="IN"/>
         <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
         <attribute name="contactMechId" type="String" mode="OUT" optional="true"/>
         <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
