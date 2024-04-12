@@ -53,7 +53,34 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="AddMilerProductFtl"/>
     </request-map>
+    <request-map uri="createUserEvent">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.ofbiztutorial.usermgr.events.UserEvents" invoke="createUserEvent"/>
+        <response name="success" type="view" value="CreateUserFtl" save-home-view="true"/>
+        <response name="error" type="view" value="CreateUserFtl" save-home-view="true"/>
+    </request-map>
+
+    <request-map uri="CreateUserFtl">
+        <security auth="true" https="true"/>
+        <response name="success" type="view" value="CreateUserFtl"/>
+    </request-map>
+    <request-map uri="ListUserFtl">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ListUserFtl"/>
+    </request-map>
+    <request-map uri="ListUserViewFtl">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ListUserViewFtl"/>
+    </request-map>
+    <request-map uri="ViewProfile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ViewProfileFtl"/>
+    </request-map>
     <!-- View Mappings -->
+    <view-map name="ViewProfileFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#ViewProfileFtl"/>
+    <view-map name="ListUserViewFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#ListUserViewFtl"/>
+    <view-map name="ListUserFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#ListUserFtl"/>
+    <view-map name="CreateUserFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#CreateUserFtl"/>
     <view-map name="AddMilerProductFtl" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#AddMilerProductFtl"/>
     <view-map name="FindMilerProduct" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#FindMilerProduct"/>
     <view-map name="main" type="screen" page="component://ofbiz-tutorial/widget/Ofbiz-tutorialScreens.xml#main"/>
