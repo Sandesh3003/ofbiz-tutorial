@@ -83,4 +83,7 @@ under the License.
     <property key="Ofbiz-tutorialViewUserFtl">
         <value xml:lang="en">View User Profile</value>
     </property>
+    <property key="PiesImportApplication">
+        <value xml:lang="en">PIES Import Application</value>
+    </property>
 </resource>
