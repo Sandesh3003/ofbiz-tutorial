@@ -30,6 +30,7 @@ public class ImportPiesDataEvent{
             return ServiceUtil.returnError("File Path cannot be left empty!!!!").toString();
         }
         File file = new File(filePath);
+        context.put("file", file);
         try{
             Map<String, Object> serviceResult = dispatcher.runSync("importPIESSetupFile", context);
             if(ServiceUtil.isError(serviceResult)){

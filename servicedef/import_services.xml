@@ -3,9 +3,21 @@
     <description>Import Manager Services</description>
     <vendor></vendor>
     <version>1.0</version>
-    <service name="importPIESSetupFile" engine="java" auth="true" location="org.apache.ofbiz.ofbiztutorial.importmgr"
+    <service name="importPIESSetupFile" engine="java" auth="true" location="org.apache.ofbiz.ofbiztutorial.importmgr.services.ImportServices"
              invoke="importPIESSetupFile">
         <attribute name="filePath" type="String" mode="IN" optional="true"/>
         <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
+    </service>
+    <service name="parsePIESSetupFile" engine="java" auth="true" location="org.apache.ofbiz.ofbiztutorial.importmgr.services.ImportServices"
+             invoke="parsePIESSetupFile">
+        <attribute name="filePath" type="String" mode="IN" optional="true"/>
+        <attribute name="successItemCount" type="number" mode="OUT" optional="true"/>
+        <attribute name="failedItem" type="List" mode="OUT" optional="true"/>
+        <attribute name="failedItemCount" type="number" mode="OUT" optional="true"/>
+    </service>
+    <service name="mapPIESSetupFile" engine="java" auth="true" location="org.apache.ofbiz.ofbiztutorial.importmgr.services.ImportServices"
+             invoke="mapPIESSetupFile">
+        <attribute name="itemDetails" type="Map" mode="IN" optional="true"/>
+        <attribute name="productId" type="id" mode="OUT" optional="true"/>
     </service>
 </services>
