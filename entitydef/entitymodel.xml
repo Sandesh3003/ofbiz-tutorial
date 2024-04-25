@@ -82,4 +82,25 @@ under the License.
             <key-map field-name="productFeatureId"/>
         </relation>
     </entity>
+
+
+    <entity entity-name="ProductShipmentBox" package-name="org.apache.ofbiz.ofbiztutorial">
+        <field name="productId" type="id"/>
+        <field name="packageUom" type="very-short"/>
+        <field name="shipmentBoxTypeId" type="id" />
+        <field name="packageBarCodeCharacters" type="id"/>
+        <field name="packageLevelGTIN" type="id"/>
+        <field name="quantityOfEaches" type="numeric"/>
+        <field name="innerQuantity" type="numeric"/>
+        <field name="orderable" type="indicator"/>
+        <prim-key field="productId"/>
+        <prim-key field="packageUom"/>
+        <prim-key field="shipmentBoxTypeId"/>
+        <relation type="one" rel-entity-name="Product" fk-name="PROD_PACK">
+            <key-map field-name="productId"/>
+        </relation>
+        <relation type="one" rel-entity-name="ShipmentBoxType" fk-name="BOX_TYPE">
+            <key-map field-name="shipmentBoxTypeId"/>
+        </relation>
+    </entity>
 </entitymodel>
