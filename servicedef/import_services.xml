@@ -1,0 +1,11 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="https://ofbiz.apache.org/dtds/services.xsd">
+    <description>Import Manager Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+    <service name="importPIESSetupFile" engine="java" auth="true" location="org.apache.ofbiz.ofbiztutorial.importmgr"
+             invoke="importPIESSetupFile">
+        <attribute name="filePath" type="String" mode="IN" optional="true"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="true"/>
+    </service>
+</services>
