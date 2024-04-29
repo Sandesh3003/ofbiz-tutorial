@@ -1,6 +1,11 @@
 package org.apache.ofbiz.ofbiztutorial.importmgr.services;
 
 import net.sf.cglib.core.Local;
+import org.apache.ofbiz.entity.Delegator;
+import org.apache.ofbiz.entity.GenericEntityException;
+import org.apache.ofbiz.entity.GenericValue;
+import org.apache.ofbiz.entity.transaction.GenericTransactionException;
+import org.apache.ofbiz.entity.transaction.TransactionUtil;
 import org.apache.ofbiz.service.*;
 import org.apache.ofbiz.base.util.UtilMisc;
 
@@ -90,7 +95,39 @@ public class ImportServices{
         return resultMap;
     }
 
-//    public static Map<String, Object> mapPIESSetupFile(DispatchContext dctx, Map<String, ? extends Object> context){
-//
-//    }
+    public static Map<String, Object> mapPIESSetupFile(DispatchContext dctx, Map<String, ? extends Object> context) throws GenericEntityException {
+        Map<String, Object> resultMap = new HashMap<>();
+        LocalDispatcher dispatcher=dctx.getDispatcher();
+        Delegator delegator = dctx.getDelegator();
+
+        // Product Entity Map(Item --> Product)
+
+        try{
+            TransactionUtil.begin();
+
+            // Check if brand party group exists, create if it does not exist
+            String brandAAIAId = (String) context.get("BrandAAIAID");
+            String brandPartyGroupId = checkPartyGroup(delegator, brandAAIAId);
+
+            if(brandPartyGroupId==null){
+                resultMap=dispatcher.runSync("createPartyGroup", UtilMisc.toMap("groupName", context.get("BrandLabel"),
+                        "externalId", context.get("BrandAAIAID")));
+                brandPartyGroupId = resultMap.get("partyId").toString();
+                resultMap.clear();
+            }
+
+
+
+        } catch (GenericTransactionException e) {
+            throw new RuntimeException(e);
+        } catch (GenericServiceException e) {
+            throw new RuntimeException(e);
+        }
+
+        return (Map<String, Object>) resultMap.get("productId");
+    }
+    private static String checkPartyGroup(Delegator delegator, String brandAAIAId) throws GenericEntityException {
+        GenericValue partyGroup = delegator.findOne("PartyGroup", UtilMisc.toMap("externalId", brandAAIAId), false);
+        return partyGroup.get("partyId").toString();
+    }
 }
